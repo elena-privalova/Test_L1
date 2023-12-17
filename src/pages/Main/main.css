@@ -1,0 +1,16 @@
+.container__skeletons-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.container__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4F493F;
+  font-size: 24px;
+  font-family: 'Raleway';
+}
+
