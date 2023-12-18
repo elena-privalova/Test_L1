@@ -8,7 +8,7 @@ import {
 } from './types';
 
 export const fetchGetPosts = async (): Promise<ResponsePostsList> => {
-  const { data } = await api.get('posts?limit=10');
+  const { data } = await api.get('posts?limit=20');
   return data;
 };
 
