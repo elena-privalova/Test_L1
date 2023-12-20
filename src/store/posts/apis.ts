@@ -8,7 +8,7 @@ import {
 } from './types';
 
 export const fetchGetPosts = async (): Promise<ResponsePostsList> => {
-  const { data } = await api.get('posts?limit=20');
+  const { data } = await api.get('posts?offset=700&limit=8');
   return data;
 };
 
@@ -19,6 +19,6 @@ export const fetchGetCard = async (id: number): Promise<NewsData> => {
 
 export const fetchAddRating = async (rating: RequestAddRating): Promise<ResponseRatingData> => {
   const { data } = await api.post('ratings', rating);
-  return data;
+  return data.value;
 };
 

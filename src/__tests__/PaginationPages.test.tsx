@@ -2,13 +2,13 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import PaginationPages from '../components/PaginationPages/PaginationPages';
 
+const countPages = 5;
+const currentPage = 1;
+const changePageNumber = jest.fn();
+
 describe('Pagination component', () => {
 
   it('testing pagination with all right props', () => {
-    const countPages = 5;
-    const currentPage = 1;
-    const changePageNumber = jest.fn();
-
     render(
       <PaginationPages
         countPages={countPages}
@@ -22,11 +22,19 @@ describe('Pagination component', () => {
     ).toBe(countPages);
   });
 
-  it('testing click on pages', () => {
-    const countPages = 5;
-    const currentPage = 1;
-    const changePageNumber = jest.fn();
+  it('testing pagination', () => {
+    render(
+      <PaginationPages
+        countPages={countPages}
+        currentPage={currentPage}
+        changePageNumber={changePageNumber}
+      />
+    );
 
+    expect(screen.getAllByRole('button')[0].textContent).toEqual(String(currentPage));
+  });
+
+  it('testing click on pages', () => {
     const { container } = render(
       <PaginationPages
         countPages={countPages}

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { CardState } from './types';
-import { getCard } from './thunks';
+import { addRating, getCard } from './thunks';
 
 const cardInitialState: CardState = {
   isCardLoading: false,
@@ -36,6 +36,12 @@ export const cardSlice = createSlice({
       .addCase(getCard.rejected, (state, action) => {
         state.isCardLoading = false;
         if (typeof action.error.message === 'string') state.cardError = action.error.message;
+      })
+
+      .addCase(addRating.fulfilled, (state, action) => {
+        if (typeof action.payload === 'number' && state.detailCard) {
+          state.detailCard.rating = action.payload;
+        }
       });
   }
 });
