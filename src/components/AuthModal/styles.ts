@@ -21,7 +21,7 @@ export const StyledForm = styled('form')({
   backgroundColor: '#E3DED1',
   border: '1px solid #908471',
   borderRadius: '10px',
-  boxShadow: 24
+  boxShadow: '24'
 });
 
 export const StyledLoader = styled(CircularProgress)({ marginTop: '35%' });

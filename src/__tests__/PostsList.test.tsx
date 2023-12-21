@@ -72,8 +72,7 @@ describe('Test TargetComponent', () => {
 
     const mockStore = configureStore();
 
-    it('render', () => {
-        const store = mockStore({
+    const store = mockStore({
             auth: {
                 authUser: null
             },
@@ -85,10 +84,20 @@ describe('Test TargetComponent', () => {
             }
         })
 
+
+    it('render', () => {
         render(<BrowserRouter>
         <ReduxProvider reduxStore={store}><PostsList postsArray={data} /></ReduxProvider>
         </BrowserRouter>)
 
         expect(screen.getAllByText('Animals').length).toEqual(1)
+    })
+
+    it('user posts', () => {
+        const { container } = render(<BrowserRouter>
+        <ReduxProvider reduxStore={store}><PostsList postsArray={data} userPosts /></ReduxProvider>
+        </BrowserRouter>)
+
+        expect(container.firstChild).toHaveClass('user-posts')
     })
 });
