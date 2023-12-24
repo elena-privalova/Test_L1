@@ -57,7 +57,7 @@ const UserCard: FC<UserCardProps> = ({ user }) => {
           }
           title={user.email}
           titleTypographyProps={StyledCardHeaderBlock.titleTypographyProps}
-          subheader={getFormattedFullName(user.firstName, user.lastName)}
+          subheader={getFormattedFullName(user.firstName ?? '', user.lastName ?? '')}
           subheaderTypographyProps={StyledCardHeaderBlock.subheaderTypographyProps}
         />
         {currentUser.id === authUser.id && (

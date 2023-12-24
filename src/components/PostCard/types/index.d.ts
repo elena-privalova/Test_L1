@@ -1,7 +1,7 @@
 interface AuthorData {
   id: number,
-  firstName: string,
-  lastName: string,
+  firstName: string | null,
+  lastName: string | null,
   email: string,
   avatarPath: string | null,
   createdAt: string,

@@ -85,7 +85,7 @@ const DetailCard: FC<NewsData> = (news) => {
           className="picture"
           component="img"
           height="380px"
-          image={`${import.meta.env.VITE_APP_API_URL}${news.coverPath}`}
+          image={`https://api.news.academy.dunice.net${news.coverPath}`}
           onError={handleError}
           alt="News image"
         />
