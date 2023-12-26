@@ -1,12 +1,12 @@
-import { AuthState } from '../../store/auth/types';
-import { AuthModalVisibility } from '../../store/modals/types';
+import { AuthState } from '../../../store/auth/types';
+import { AuthModalVisibility } from '../../../store/modals/types';
 
-interface IAuthModalTestStore {
+interface IAuthModalMockStore {
   auth: AuthState;
   authModals: AuthModalVisibility;
 }
 
-export const authModalHiddenStore: IAuthModalTestStore = {
+export const authModalHiddenStore: IAuthModalMockStore = {
   auth: {
     isAuthLoading: false,
     authUser: null,
@@ -18,7 +18,7 @@ export const authModalHiddenStore: IAuthModalTestStore = {
   },
 };
 
-export const authModalLoadingStore: IAuthModalTestStore = {
+export const authModalLoadingStore: IAuthModalMockStore = {
   auth: {
     isAuthLoading: true,
     authUser: null,
@@ -30,7 +30,7 @@ export const authModalLoadingStore: IAuthModalTestStore = {
   },
 };
 
-export const authModalSignUpStore: IAuthModalTestStore = {
+export const authModalSignUpStore: IAuthModalMockStore = {
   auth: {
     isAuthLoading: false,
     authUser: null,
@@ -42,7 +42,7 @@ export const authModalSignUpStore: IAuthModalTestStore = {
   },
 };
 
-export const authModalErrorStore: IAuthModalTestStore = {
+export const authModalErrorStore: IAuthModalMockStore = {
   auth: {
     isAuthLoading: false,
     authUser: null,
@@ -54,7 +54,7 @@ export const authModalErrorStore: IAuthModalTestStore = {
   },
 };
 
-export const authModalDefaultStore: IAuthModalTestStore = {
+export const authModalDefaultStore: IAuthModalMockStore = {
   auth: {
     isAuthLoading: false,
     authUser: null,

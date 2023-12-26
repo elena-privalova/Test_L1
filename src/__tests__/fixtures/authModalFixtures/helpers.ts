@@ -1,13 +1,14 @@
 import '@testing-library/jest-dom';
 import { fireEvent, screen } from '@testing-library/react';
-import { CURRENT_AUTH_TYPE_VALUES } from '../../store/modals/types';
+import { CURRENT_AUTH_TYPE_VALUES } from '../../../store/modals/types';
+import { getElementByTagName, getElementsByTagName } from '../../../utils/testHelpers';
 
 export const expectModalHidden = (container: HTMLElement) => {
   expect(container.firstChild).toBeNull();
 };
 
-export const expectLoaderInModal = (container: HTMLElement) => {
-  expect(container.querySelector('circle')).toBeInTheDocument();
+export const expectDisplayLoader = () => {
+  expect(getElementByTagName('circle')).toBeInTheDocument();
 };
 
 export const expectSignUpModalOpened = () => {
@@ -15,7 +16,7 @@ export const expectSignUpModalOpened = () => {
     screen.getByText(CURRENT_AUTH_TYPE_VALUES.signup.toUpperCase())
   ).toBeInTheDocument();
 
-  expect(screen.getAllByRole('textbox').length).toEqual(2);
+  expect(getElementsByTagName('input').length).toEqual(2);
   expect(screen.getAllByRole('button').length).toEqual(2);
 };
 
@@ -24,7 +25,7 @@ export const expectWarningAlertOpened = () => {
 };
 
 export const expectUserAuthorized = (container: HTMLElement) => {
-  const [emailInput, passwordInput] = screen.getAllByRole('textbox');
+  const [emailInput, passwordInput] = getElementsByTagName('input');
   const [showPasswordBtn, loginBtn] = screen.getAllByRole('button');
 
   fireEvent.input(emailInput, { target: { value: 'priva@gmail.com' } });
@@ -43,8 +44,8 @@ export const expectUserAuthorized = (container: HTMLElement) => {
   expect(container.firstChild).toBeNull();
 };
 
-export const expectEmailHelperTextShowed = (container: HTMLElement) => {
-  const [emailInput, passwordInput] = screen.queryAllByRole('textbox');
+export const expectEmailHelperTextShowed = () => {
+  const [emailInput, passwordInput] = getElementsByTagName('input');
   const loginBtn = screen.getAllByRole('button')[1];
 
   fireEvent.input(emailInput, { target: { value: 'priva.com' } });
@@ -53,13 +54,13 @@ export const expectEmailHelperTextShowed = (container: HTMLElement) => {
 
   expect(loginBtn).toBeDisabled();
 
-  expect(container.querySelectorAll('p')[1].textContent).toEqual(
+  expect(getElementsByTagName('p')[1].textContent).toEqual(
     'Email must be correct'
   );
 };
 
-export const expectPasswordHelperTextShowed = (container: HTMLElement) => {
-  const [emailInput, passwordInput] = screen.queryAllByRole('textbox');
+export const expectPasswordHelperTextShowed = () => {
+  const [emailInput, passwordInput] = getElementsByTagName('input');
   const loginBtn = screen.getAllByRole('button')[1];
 
   fireEvent.input(emailInput, { target: { value: 'priva.com' } });
@@ -68,13 +69,13 @@ export const expectPasswordHelperTextShowed = (container: HTMLElement) => {
 
   expect(loginBtn).toBeDisabled();
 
-  expect(container.querySelectorAll('p')[1].textContent).toEqual(
+  expect(getElementsByTagName('p')[1].textContent).toEqual(
     '8 symbols, letters in both cases, numbers'
   );
 };
 
-export const expectBothHelperTextShowed = (container: HTMLElement) => {
-  const [emailInput, passwordInput] = screen.queryAllByRole('textbox');
+export const expectBothHelperTextShowed = () => {
+  const [emailInput, passwordInput] = getElementsByTagName('input');
   const loginBtn = screen.getAllByRole('button')[1];
 
   fireEvent.input(emailInput, { target: { value: 'priva.com' } });
@@ -84,10 +85,12 @@ export const expectBothHelperTextShowed = (container: HTMLElement) => {
 
   expect(loginBtn).toBeDisabled();
 
-  expect(container.querySelectorAll('p')[1].textContent).toEqual(
+  const helperTexts = getElementsByTagName('p');
+
+  expect(helperTexts[1].textContent).toEqual(
     'Email must be correct'
   );
-  expect(container.querySelectorAll('p')[2].textContent).toEqual(
+  expect(helperTexts[2].textContent).toEqual(
     '8 symbols, letters in both cases, numbers'
   );
 };

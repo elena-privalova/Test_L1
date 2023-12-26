@@ -4,28 +4,28 @@ import PaginationPages from '../../components/PaginationPages/PaginationPages';
 import {
   expectPageSelected,
   expectPaginationRendered,
-} from '../../fixtures/paginationPagesFixtures/helpers';
-import { paginationData } from '../../fixtures/paginationPagesFixtures/mocks';
+} from '../fixtures/paginationPagesFixtures/helpers';
+import { mockPaginationPages } from '../fixtures/paginationPagesFixtures/mocks';
 
 describe('<Pagination />', () => {
-  it('should pagination pages rendered with all right props', () => {
+  it('should render pagination pages', () => {
     render(
       <PaginationPages
-        countPages={paginationData.countPages}
-        currentPage={paginationData.currentPage}
-        changePageNumber={paginationData.changePageNumber}
+        countPages={mockPaginationPages.countPages}
+        currentPage={mockPaginationPages.currentPage}
+        changePageNumber={mockPaginationPages.changePageNumber}
       />
     );
 
     expectPaginationRendered();
   });
 
-  it('should clicking will take to the selected page', () => {
+  it('should change page number after clicking on selected page', () => {
     const { container } = render(
       <PaginationPages
-        countPages={paginationData.countPages}
-        currentPage={paginationData.currentPage}
-        changePageNumber={paginationData.changePageNumber}
+        countPages={mockPaginationPages.countPages}
+        currentPage={mockPaginationPages.currentPage}
+        changePageNumber={mockPaginationPages.changePageNumber}
       />
     );
 

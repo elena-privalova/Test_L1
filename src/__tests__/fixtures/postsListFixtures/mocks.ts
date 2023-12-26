@@ -1,4 +1,4 @@
-import { NewsData } from '../../components/PostCard/types';
+import { NewsData } from '../../../components/PostCard/types';
 
 export const postsStore = {
   auth: {
@@ -12,7 +12,7 @@ export const postsStore = {
   },
 };
 
-export const posts: NewsData[] = [
+export const mockPosts: NewsData[] = [
   {
     author: {
       avatarPath: '/images/1698064906964-346904561.jpeg',

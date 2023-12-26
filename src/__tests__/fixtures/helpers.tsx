@@ -1,9 +1,9 @@
-import { Store, configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import { Store, configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter } from 'react-router-dom';
-
-import { rootReducer } from '../store';
 import { render } from '@testing-library/react';
+
+import { rootReducer } from '../../store';
 
 interface IReduxProviderProps {
   children: JSX.Element | null;

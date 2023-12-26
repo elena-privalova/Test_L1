@@ -1,25 +1,25 @@
 import AuthModal from '../../components/AuthModal/AuthModal';
-import { renderWithProvider } from '../../fixtures/helpers';
+import { renderWithProvider } from '../fixtures/helpers';
 import {
   authModalLoadingStore,
   authModalHiddenStore,
   authModalSignUpStore,
   authModalErrorStore,
   authModalDefaultStore,
-} from '../../fixtures/authModalFixtures/mocks';
+} from '../fixtures/authModalFixtures/mocks';
 import {
   expectModalHidden,
+  expectDisplayLoader,
   expectSignUpModalOpened,
-  expectLoaderInModal,
   expectWarningAlertOpened,
   expectUserAuthorized,
   expectEmailHelperTextShowed,
-  expectPasswordHelperTextShowed,
   expectBothHelperTextShowed,
-} from '../../fixtures/authModalFixtures/helpers';
+  expectPasswordHelperTextShowed,
+} from '../fixtures/authModalFixtures/helpers';
 
 describe('<AuthModal />', () => {
-  it('render', () => {
+  it('should be hidden when modal is not active', () => {
     const { container } = renderWithProvider(
       authModalHiddenStore,
       <AuthModal />
@@ -28,28 +28,28 @@ describe('<AuthModal />', () => {
     expectModalHidden(container);
   });
 
-  it('render', () => {
-    const { container } = renderWithProvider(
+  it('should display loader', () => {
+    renderWithProvider(
       authModalLoadingStore,
       <AuthModal />
     );
 
-    expectLoaderInModal(container);
+    expectDisplayLoader();
   });
 
-  it('render', () => {
+  it('should render sign up modal', () => {
     renderWithProvider(authModalSignUpStore, <AuthModal />);
 
     expectSignUpModalOpened();
   });
 
-  it('render', () => {
+  it('should display alert when user could not authorized', () => {
     renderWithProvider(authModalErrorStore, <AuthModal />);
 
     expectWarningAlertOpened();
   });
 
-  it('render', () => {
+  it('should be closed when user successfully authorized', () => {
     const { container } = renderWithProvider(
       authModalDefaultStore,
       <AuthModal />
@@ -58,30 +58,30 @@ describe('<AuthModal />', () => {
     expectUserAuthorized(container);
   });
 
-  it('render', () => {
-    const { container } = renderWithProvider(
+  it('should display helper text when incorrect email was entered', () => {
+    renderWithProvider(
       authModalDefaultStore,
       <AuthModal />
     );
 
-    expectEmailHelperTextShowed(container);
+    expectEmailHelperTextShowed();
   });
 
-  it('render', () => {
-    const { container } = renderWithProvider(
+  it('should display helper text when incorrect password was entered', () => {
+    renderWithProvider(
       authModalDefaultStore,
       <AuthModal />
     );
 
-    expectPasswordHelperTextShowed(container);
+    expectPasswordHelperTextShowed();
   });
 
-  it('render', () => {
-    const { container } = renderWithProvider(
+  it('should display two helper texts when incorrect email and password were entered', () => {
+    renderWithProvider(
       authModalDefaultStore,
       <AuthModal />
     );
 
-    expectBothHelperTextShowed(container);
+    expectBothHelperTextShowed();
   });
 });

@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
-import { getFormattedDate } from '../../utils/getFormattedDate';
-import { posts } from './mocks';
+import { getFormattedDate } from '../../../utils/getFormattedDate';
+import { mockPosts } from './mocks';
 
 export const expectPostsRendred = () => {
-  posts.forEach(post => {
+  mockPosts.forEach(post => {
     expect(screen.getByText(post.title)).toBeInTheDocument();
     expect(screen.getByText(post.author.email)).toBeInTheDocument();
     expect(screen.getByText(post.text)).toBeInTheDocument();
