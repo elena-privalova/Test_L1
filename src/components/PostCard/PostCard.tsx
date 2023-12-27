@@ -28,6 +28,7 @@ import {
   StyledTypography
 } from './styles';
 import './postCard.css';
+import { VITE_APP_API_URL } from '../../constants';
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -100,7 +101,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
         <CardMedia
           component="img"
           height="180px"
-          image={`https://api.news.academy.dunice.net${post.coverPath}`}
+          image={`${VITE_APP_API_URL}$${post.coverPath}`}
           onError={handleError}
           alt="News image"
         />

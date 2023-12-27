@@ -28,6 +28,7 @@ import { StyledButton } from '../Header/styles';
 import { StyledInfoCard } from './styles';
 import './detailCard.css';
 import classNames from 'classnames';
+import { VITE_APP_API_URL } from '../../constants';
 
 const DetailCard: FC<NewsData> = (news) => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -85,7 +86,7 @@ const DetailCard: FC<NewsData> = (news) => {
           className="picture"
           component="img"
           height="380px"
-          image={`https://api.news.academy.dunice.net${news.coverPath}`}
+          image={`${VITE_APP_API_URL}${news.coverPath}`}
           onError={handleError}
           alt="News image"
         />

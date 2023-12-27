@@ -1,6 +1,8 @@
+import { VITE_APP_API_URL } from "../constants";
+
 export const getFormattedAvatarPath = (avatarPath: string | null): string => {
   if (avatarPath != null) {
-    return `https://api.news.academy.dunice.net${avatarPath}`;
+    return `${VITE_APP_API_URL}${avatarPath}`;
   }
   return '';
 };
