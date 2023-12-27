@@ -14,6 +14,7 @@ describe('<PostsList />', () => {
     expectPostsRendred();
   });
 
+  //???
   it('should render empty posts list', () => {
     const { container } = renderWithProvider(
       postsStore,

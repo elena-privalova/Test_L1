@@ -12,11 +12,13 @@ export const expectPaginationRendered = () => {
   );
 };
 
-export const expectPageSelected = (container: HTMLElement) => {
-  fireEvent.click(container.querySelectorAll('button')[1]);
+//???
+export const expectPageNumberChanged = () => {
+  const pages = screen.getAllByRole('button');
 
-  expect(mockPaginationPages.changePageNumber).toHaveBeenCalledWith(2);
-  expect(screen.getAllByRole('button').length).toEqual(
-    mockPaginationPages.countPages
-  );
+  expect(pages.length).toEqual(mockPaginationPages.countPages);
+
+  fireEvent.click(pages[2]);
+
+  expect(mockPaginationPages.changePageNumber).toHaveBeenCalledWith(3);
 };

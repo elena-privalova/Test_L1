@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import PaginationPages from '../../components/PaginationPages/PaginationPages';
 import {
-  expectPageSelected,
+  expectPageNumberChanged,
   expectPaginationRendered,
 } from '../fixtures/paginationPagesFixtures/helpers';
 import { mockPaginationPages } from '../fixtures/paginationPagesFixtures/mocks';
@@ -21,7 +21,7 @@ describe('<Pagination />', () => {
   });
 
   it('should change page number after clicking on selected page', () => {
-    const { container } = render(
+    render(
       <PaginationPages
         countPages={mockPaginationPages.countPages}
         currentPage={mockPaginationPages.currentPage}
@@ -29,6 +29,6 @@ describe('<Pagination />', () => {
       />
     );
 
-    expectPageSelected(container);
+    expectPageNumberChanged();
   });
 });
