@@ -18,10 +18,6 @@ export const expectPostsRendred = () => {
   });
 };
 
-export const expectEmptyPostsRendered = (container: HTMLElement) => {
-  expect(container.firstChild).toBeEmptyDOMElement();
-};
-
 export const expectUserPostsRendered = (container: HTMLElement) => {
   expect(container.firstChild).toHaveClass('user-posts');
 };

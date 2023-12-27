@@ -1,7 +1,7 @@
 import DetailCard from '../../components/DetailCard/DetailCard';
 import { renderWithProvider } from '../fixtures/helpers';
 import { detailCardForAuthUserStore, detailCardForUnauthUserStore, mockDetailCard } from '../fixtures/detailCardFixtures/mocks';
-import { expectAuthDetailCardRendered, expectRatingChanged, expectRatingRendered, expectUnauthDetailCardRendered } from '../fixtures/detailCardFixtures/helpers';
+import { expectDetailCardForAuthUserRendered, expectRatingChanged, expectRatingRendered, expectDetailCardForUnauthUserRendered } from '../fixtures/detailCardFixtures/helpers';
 
 describe('<DetailCard />', () => {
   it('should render detail card for unauthorized user', () => {
@@ -10,7 +10,7 @@ describe('<DetailCard />', () => {
           <DetailCard {...mockDetailCard} />
     );
 
-    expectUnauthDetailCardRendered();
+    expectDetailCardForUnauthUserRendered();
   });
 
   it('should render detail card for authorized user', () => {
@@ -19,7 +19,7 @@ describe('<DetailCard />', () => {
           <DetailCard {...mockDetailCard} />
     );
 
-    expectAuthDetailCardRendered();
+    expectDetailCardForAuthUserRendered();
   });
 
   it('should have rating rendered after rating button was pressed', () => {

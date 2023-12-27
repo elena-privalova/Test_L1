@@ -3,8 +3,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import { mockDetailCard } from './mocks';
 import { getFormattedDate } from '../../../utils/getFormattedDate';
 
-//???
-export const expectUnauthDetailCardRendered = () => {
+export const expectDetailCardForUnauthUserRendered = () => {
   expect(screen.getByText(mockDetailCard.title)).toBeInTheDocument();
   expect(screen.getByText(mockDetailCard.text)).toBeInTheDocument();
   expect(screen.getByText(mockDetailCard.author.email)).toBeInTheDocument();
@@ -20,8 +19,9 @@ export const expectUnauthDetailCardRendered = () => {
   ).toBeInTheDocument();
 };
 
-//???
-export const expectAuthDetailCardRendered = () => {
+export const expectDetailCardForAuthUserRendered = () => {
+  expectDetailCardForUnauthUserRendered();
+
   expect(screen.getAllByRole('generic')[2]).toHaveClass(
     'detail-card__header--auth'
   );
@@ -35,24 +35,17 @@ export const expectRatingRendered = () => {
 
   expect(
     screen
-      .getAllByRole('radio')
-      .filter((item, index) => item.id === `:r${index + 1}:`).length
+    .getAllByRole('radio').slice(0, -1).length
   ).toEqual(5);
 };
 
-//???
 export const expectRatingChanged = () => {
   const rateBtn = screen.getByRole('button');
 
   fireEvent.click(rateBtn);
 
-  const newRate = screen
-    .getAllByRole('radio')
-    .find(item => item.id === `:r${5}:`);
+  fireEvent.click(screen
+    .getAllByRole('radio').slice(0, -1)[3]);
 
-  if (newRate) {
-    fireEvent.click(newRate);
-  }
-
-  expect(screen.queryByDisplayValue(`Rating: ${newRate}`));
+  expect(screen.queryByDisplayValue(4)).toBeInTheDocument();
 };

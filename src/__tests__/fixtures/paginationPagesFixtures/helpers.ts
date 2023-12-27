@@ -12,7 +12,6 @@ export const expectPaginationRendered = () => {
   );
 };
 
-//???
 export const expectPageNumberChanged = () => {
   const pages = screen.getAllByRole('button');
 
