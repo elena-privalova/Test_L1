@@ -1,7 +1,10 @@
 import '@testing-library/jest-dom';
 import { fireEvent, screen } from '@testing-library/react';
 import { CURRENT_AUTH_TYPE_VALUES } from '../../../store/modals/types';
-import { getElementByTagName, getElementsByTagName } from '../../../utils/testHelpers';
+import {
+  getElementByTagName,
+  getElementsByTagName,
+} from '../../../utils/testHelpers';
 
 export const expectModalHidden = (container: HTMLElement) => {
   expect(container.firstChild).toBeNull();
@@ -87,9 +90,7 @@ export const expectBothHelperTextShowed = () => {
 
   const helperTexts = getElementsByTagName('p');
 
-  expect(helperTexts[1].textContent).toEqual(
-    'Email must be correct'
-  );
+  expect(helperTexts[1].textContent).toEqual('Email must be correct');
   expect(helperTexts[2].textContent).toEqual(
     '8 symbols, letters in both cases, numbers'
   );
